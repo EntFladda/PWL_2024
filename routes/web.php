@@ -18,17 +18,8 @@ use App\Http\Controllers\PhotoController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/hello', [WelcomeController::class,'hello']);
-Route::get('/home', [HomeController::class,'index']);
-Route::get('/about', [aboutController::class, 'about']);
-Route::get('/articles/{id}', [articlesController::class, 'artikel']);
-Route::resource('photos', PhotoController::class);
-Route::resource('photos', PhotoController::class)->only([
-    'index', 'show'
-   ]);
-   Route::resource('photos', PhotoController::class)->except([
-    'create', 'store', 'update', 'destroy'
-   ]);
+// ROUTE
+
 // Route::get('/world', function () {
 //     return 'World';
 //    });
@@ -89,3 +80,24 @@ Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 Route::get('/', function () {
     return view('welcome');
     });
+
+//CONTROLLER
+
+Route::get('/hello', [WelcomeController::class,'hello']);
+Route::get('/home', [HomeController::class,'index']);
+Route::get('/about', [aboutController::class, 'about']);
+Route::get('/articles/{id}', [articlesController::class, 'artikel']);
+Route::resource('photos', PhotoController::class);
+Route::resource('photos', PhotoController::class)->only([
+    'index', 'show'
+   ]);
+   Route::resource('photos', PhotoController::class)->except([
+    'create', 'store', 'update', 'destroy'
+   ]);
+
+//VIEW
+
+// Route::get('/greeting', function () {
+//     return view('blog.hello', ['name' => 'Dika']);
+//     });
+Route::get('/greeting', [WelcomeController::class, 'greeting']);
